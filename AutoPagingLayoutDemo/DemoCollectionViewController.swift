@@ -25,8 +25,9 @@ class DemoCollectionViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.automaticallyAdjustsScrollViewInsets = false
         self.view.backgroundColor = UIColor.whiteColor()
+        
+        self.automaticallyAdjustsScrollViewInsets = false
         let configurator = WKAutomaticPagingFlowLayoutConfigurator()
         configurator.columnCountOfRow = self.matrix.columnCount
         configurator.rowCountOfPage = self.matrix.rowCount
@@ -36,10 +37,10 @@ class DemoCollectionViewController: UIViewController {
         configurator.lineSpacing = 5
         let layout = WKAutomaticPagingFlowLayout(layoutConfigurator: configurator)
         let collectionView = UICollectionView(frame: CGRectZero, collectionViewLayout:layout)
-        
+        collectionView.pagingEnabled = true
         collectionView.wk_Size = CGSizeMake(
             CGFloat(self.matrix.columnCount) * 100, CGFloat(self.matrix.rowCount) * 100)
-        collectionView.pagingEnabled = true
+        
         collectionView.center = self.view.center
         collectionView.backgroundColor = UIColor(red: 0.675, green: 0.176, blue: 0.452, alpha: 0.83)
         self.view.addSubview(collectionView)
