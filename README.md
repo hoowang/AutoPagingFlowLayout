@@ -2,6 +2,16 @@
 根据collectionView datasource自动分页的，展示item的布局实现。废话不多说，请直接看图~~
 ![image](https://github.com/hoowang/AutoPagingFlowLayout/blob/master/AutoPage.gif)  
 
+## 系统要求
+- iOS 8.0
+- ARC
+- Swift > ~2.2
+
+## 安装方法
+支持CocoaPods 安装，pod search AutoPagingFlowLayout
+
+也可以下载文件，拖放至项目目录
+
 ## 使用方法：
 ###1.创建flowlayout configurator对象 并配置参数
 
