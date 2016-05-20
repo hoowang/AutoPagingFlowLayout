@@ -2,7 +2,7 @@
 //  WKAutomaticPagingFlowLayoutConfigurator.swift
 //  WKChatViewControllerDemo
 //
-//  Created by 王虎 on 16/4/6.
+//  Created by hooge on 16/4/6.
 //  Copyright © 2016年 hoowang. All rights reserved.
 //
 

@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  AutoPagingLayoutDemo
 //
-//  Created by 王虎 on 16/5/20.
+//  Created by hooge on 16/5/20.
 //  Copyright © 2016年 hooge. All rights reserved.
 //
 
