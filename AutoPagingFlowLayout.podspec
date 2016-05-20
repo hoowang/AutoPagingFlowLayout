@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name = 'AutoPagingFlowLayout'
-  s.version = '1.0.0'
+  s.version = '1.0.1'
   s.license = 'MIT'
   s.summary = 'an collectionView auto paging layout in Swift for iOS'
   s.homepage = 'https://github.com/hoowang/AutoPagingFlowLayout'
@@ -12,5 +12,5 @@ Pod::Spec.new do |s|
   s.tvos.deployment_target = '9.0'
   s.watchos.deployment_target = '2.0'
 
-  s.source_files = 'AutoPagingFlowLayout/*.swift'
+  s.source_files = 'AutoPagingFlowLayout/**/*.swift'
 end
