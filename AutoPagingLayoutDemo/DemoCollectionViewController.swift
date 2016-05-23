@@ -28,7 +28,7 @@ class DemoCollectionViewController: UIViewController {
         self.view.backgroundColor = UIColor.whiteColor()
         
         self.automaticallyAdjustsScrollViewInsets = false
-        let configurator = WKAutomaticPagingFlowLayoutConfigurator()
+        var configurator = WKAutomaticPagingFlowLayoutConfigurator()
         configurator.columnCountOfRow = self.matrix.columnCount
         configurator.rowCountOfPage = self.matrix.rowCount
         configurator.contentInsets = UIEdgeInsetsMake(10, 10, 10, 10)

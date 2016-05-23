@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class WKAutomaticPagingFlowLayoutConfigurator: NSObject {
+public struct WKAutomaticPagingFlowLayoutConfigurator {
     var lineSpacing:CGFloat = 0.0   // 行间距
     var columnSpacing:CGFloat = 0.0 // 列间距
     var rowCountOfPage:Int = 0      // 一页有多少行
