@@ -9,11 +9,11 @@
 import UIKit
 
 public struct WKAutomaticPagingFlowLayoutConfigurator {
-    var lineSpacing:CGFloat = 0.0   // 行间距
-    var columnSpacing:CGFloat = 0.0 // 列间距
-    var rowCountOfPage:Int = 0      // 一页有多少行
-    var columnCountOfRow:Int = 0    // 一行有多少列
-    var cellSize = CGSizeZero
-    var contentInsets:UIEdgeInsets = UIEdgeInsetsZero //contentView 外边距
-    var scrollDirection = UICollectionViewScrollDirection.Horizontal
+    public var lineSpacing:CGFloat = 0.0   // 行间距
+    public var columnSpacing:CGFloat = 0.0 // 列间距
+    public var rowCountOfPage:Int = 0      // 一页有多少行
+    public var columnCountOfRow:Int = 0    // 一行有多少列
+    public var cellSize = CGSizeZero
+    public var contentInsets:UIEdgeInsets = UIEdgeInsetsZero //contentView 外边距
+    public var scrollDirection = UICollectionViewScrollDirection.Horizontal
 }
