@@ -8,7 +8,7 @@
 
 import UIKit
 
-public struct WKAutomaticPagingFlowLayoutConfigurator {
+public class WKAutomaticPagingFlowLayoutConfigurator : NSObject{
     public var lineSpacing:CGFloat = 0.0   // 行间距
     public var columnSpacing:CGFloat = 0.0 // 列间距
     public var rowCountOfPage:Int = 0      // 一页有多少行
@@ -16,5 +16,4 @@ public struct WKAutomaticPagingFlowLayoutConfigurator {
     public var cellSize = CGSizeZero
     public var contentInsets:UIEdgeInsets = UIEdgeInsetsZero //contentView 外边距
     public var scrollDirection = UICollectionViewScrollDirection.Horizontal
-    public init(){}
 }
