@@ -28,19 +28,20 @@ class DemoCollectionViewController: UIViewController {
         self.view.backgroundColor = UIColor.whiteColor()
         
         self.automaticallyAdjustsScrollViewInsets = false
-        var configurator = WKAutomaticPagingFlowLayoutConfigurator()
+        let configurator = WKAutomaticPagingFlowLayoutConfigurator()
         configurator.columnCountOfRow = self.matrix.columnCount
         configurator.rowCountOfPage = self.matrix.rowCount
         configurator.contentInsets = UIEdgeInsetsMake(10, 10, 10, 10)
-        configurator.scrollDirection = .Horizontal
         configurator.columnSpacing = 5
         configurator.lineSpacing = 5
         let layout = WKAutomaticPagingFlowLayout(layoutConfigurator: configurator)
         let collectionView = UICollectionView(frame: CGRectZero, collectionViewLayout:layout)
         collectionView.pagingEnabled = true
-        collectionView.wk_Size = CGSizeMake(
-            CGFloat(self.matrix.columnCount) * 100, CGFloat(self.matrix.rowCount) * 100)
-        
+        var width:CGFloat = 0
+        var height:CGFloat = 0
+        width =  CGFloat(self.matrix.columnCount) * 100
+        height = CGFloat(self.matrix.rowCount) * 100
+        collectionView.wk_Size = CGSizeMake(width, height)
         collectionView.center = self.view.center
         collectionView.backgroundColor = UIColor(red: 0.675, green: 0.176, blue: 0.452, alpha: 0.83)
         self.view.addSubview(collectionView)

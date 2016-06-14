@@ -15,5 +15,4 @@ public class WKAutomaticPagingFlowLayoutConfigurator : NSObject{
     public var columnCountOfRow:Int = 0    // 一行有多少列
     public var cellSize = CGSizeZero
     public var contentInsets:UIEdgeInsets = UIEdgeInsetsZero //contentView 外边距
-    public var scrollDirection = UICollectionViewScrollDirection.Horizontal
 }

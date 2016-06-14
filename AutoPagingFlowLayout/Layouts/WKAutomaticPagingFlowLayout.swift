@@ -19,7 +19,7 @@ public class WKAutomaticPagingFlowLayout: UICollectionViewFlowLayout {
 
    public init(layoutConfigurator:WKAutomaticPagingFlowLayoutConfigurator) {
         super.init()
-        self.scrollDirection = layoutConfigurator.scrollDirection
+        //self.scrollDirection = layoutConfigurator.scrollDirection
         self.flowLayoutCfg = layoutConfigurator
     }
 
@@ -42,10 +42,16 @@ extension WKAutomaticPagingFlowLayout{
 
     private func avaliableSizePerPage() -> (CGSize){
 
-        return CGSizeMake(pageSize().width - pageContentInsets.left -
-            pageContentInsets.right,
-                          pageSize().height - pageContentInsets.top -
-                            pageContentInsets.bottom)
+        var width:CGFloat = 0.0
+        var height:CGFloat = 0.0
+
+        width = pageSize().width - pageContentInsets.left -
+            pageContentInsets.right
+        height = pageSize().height - pageContentInsets.top -
+            pageContentInsets.bottom
+
+ 
+        return CGSizeMake(width, height)
     }
 
     //一行有多少列
@@ -119,7 +125,10 @@ extension WKAutomaticPagingFlowLayout{
     }
 
     override public func layoutAttributesForElementsInRect(rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
-
+        guard self.numberOfItems() > 0 else {
+            
+            return super.layoutAttributesForElementsInRect(rect)
+        }
         var attributeArray = [UICollectionViewLayoutAttributes]()
         for i in 0...self.numberOfItems() - 1 {
             let attributes =
@@ -141,10 +150,13 @@ extension WKAutomaticPagingFlowLayout{
     }
 
     public override func collectionViewContentSize() -> (CGSize){
+        //super.collectionViewContentSize()
         let items:CGFloat = CGFloat(numberOfItems())
         let perPageItems:CGFloat = CGFloat(numberOfItemsPerPage())
-        let width = ceil(items / perPageItems) * pageSize().width
-        let height = pageSize().height
+        var width:CGFloat = 0.0
+        var height:CGFloat = 0.0
+        width = ceil(items / perPageItems) * pageSize().width
+        height = pageSize().height
         return CGSizeMake(width, height)
     }
 }
