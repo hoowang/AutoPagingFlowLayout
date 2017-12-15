@@ -8,10 +8,10 @@
 
 import UIKit
 
-public class WKAutomaticPagingFlowLayout: UICollectionViewFlowLayout {
+open class WKAutomaticPagingFlowLayout: UICollectionViewFlowLayout {
     // MARK: - 初始化部分
-    private var flowLayoutCfg = WKAutomaticPagingFlowLayoutConfigurator()
-    private var pageContentInsets:UIEdgeInsets {
+    fileprivate var flowLayoutCfg = WKAutomaticPagingFlowLayoutConfigurator()
+    fileprivate var pageContentInsets:UIEdgeInsets {
         get{
             return self.flowLayoutCfg.contentInsets
         }
@@ -30,17 +30,17 @@ public class WKAutomaticPagingFlowLayout: UICollectionViewFlowLayout {
 
 // MARK:- 私有方法
 extension WKAutomaticPagingFlowLayout{
-    private func numberOfItems() ->(Int){
+    fileprivate func numberOfItems() ->(Int){
         let section = 0
         let numberOfItems = collectionView?.dataSource?.collectionView(collectionView!, numberOfItemsInSection: section)
         return numberOfItems!
     }
 
-    private func pageSize() -> (CGSize){
+    fileprivate func pageSize() -> (CGSize){
         return (collectionView?.bounds.size)!
     }
 
-    private func avaliableSizePerPage() -> (CGSize){
+    fileprivate func avaliableSizePerPage() -> (CGSize){
 
         var width:CGFloat = 0.0
         var height:CGFloat = 0.0
@@ -51,26 +51,26 @@ extension WKAutomaticPagingFlowLayout{
             pageContentInsets.bottom
 
  
-        return CGSizeMake(width, height)
+        return CGSize(width: width, height: height)
     }
 
     //一行有多少列
-    private func numberOfItemsPerRow() -> (Int){
+    fileprivate func numberOfItemsPerRow() -> (Int){
         return self.flowLayoutCfg.columnCountOfRow
     }
 
     // 一页有多少行
-    private func numberOfRowsPerPage() -> (Int){
+    fileprivate func numberOfRowsPerPage() -> (Int){
         return self.flowLayoutCfg.rowCountOfPage
     }
 
     // 一页的总数
-    private func numberOfItemsPerPage() -> (Int){
+    fileprivate func numberOfItemsPerPage() -> (Int){
         return numberOfItemsPerRow() * numberOfRowsPerPage()
     }
 
     // item frame 计算
-    private func calcItemFrameWithIndexPath(indexPath:NSIndexPath) ->(CGRect){
+    fileprivate func calcItemFrameWithIndexPath(_ indexPath:IndexPath) ->(CGRect){
         let index = indexPath.row
         let page = floor( CGFloat(index) / CGFloat(self.numberOfItemsPerPage()))
         let row  = floor( CGFloat(index % self.numberOfItemsPerPage()) / CGFloat(self.numberOfItemsPerRow()))
@@ -97,7 +97,7 @@ extension WKAutomaticPagingFlowLayout{
 
             y = self.pageContentInsets.top +
                 row * (height + self.flowLayoutCfg.lineSpacing)
-            let frame = CGRectMake(x, y, width, height)
+            let frame = CGRect(x: x, y: y, width: width, height: height)
 
             return frame
         }
@@ -111,29 +111,29 @@ extension WKAutomaticPagingFlowLayout{
         width = self.flowLayoutCfg.cellSize.width
         height = self.flowLayoutCfg.cellSize.height
         
-        return CGRectMake(x, y, width, height)
+        return CGRect(x: x, y: y, width: width, height: height)
     }
 }
 
 // MARK: - 重写父类方法
 extension WKAutomaticPagingFlowLayout{
-    override public func layoutAttributesForItemAtIndexPath(indexPath: NSIndexPath) -> UICollectionViewLayoutAttributes? {
-        let attributes = UICollectionViewLayoutAttributes(forCellWithIndexPath:indexPath)
+    override open func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
+        let attributes = UICollectionViewLayoutAttributes(forCellWith:indexPath)
         attributes.frame = calcItemFrameWithIndexPath(indexPath)
 
         return attributes
     }
 
-    override public func layoutAttributesForElementsInRect(rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
+    override open func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         guard self.numberOfItems() > 0 else {
             
-            return super.layoutAttributesForElementsInRect(rect)
+            return super.layoutAttributesForElements(in: rect)
         }
         var attributeArray = [UICollectionViewLayoutAttributes]()
         for i in 0...self.numberOfItems() - 1 {
             let attributes =
-                layoutAttributesForItemAtIndexPath(NSIndexPath(forRow: i, inSection: 0))
-            if CGRectIntersectsRect(rect, (attributes?.frame)!) {
+                layoutAttributesForItem(at: IndexPath(row: i, section: 0))
+            if rect.intersects((attributes?.frame)!) {
                 attributeArray.append(attributes!)
             }
         }
@@ -141,15 +141,15 @@ extension WKAutomaticPagingFlowLayout{
         return attributeArray
     }
 
-    override public func shouldInvalidateLayoutForBoundsChange(newBounds: CGRect) -> Bool {
-        if (CGSizeEqualToSize(collectionView!.bounds.size, newBounds.size)) {
+    override open func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
+        if (collectionView!.bounds.size.equalTo(newBounds.size)) {
             return false
         }else{
             return true
         }
     }
 
-    public override func collectionViewContentSize() -> (CGSize){
+    open override var collectionViewContentSize : (CGSize){
         //super.collectionViewContentSize()
         let items:CGFloat = CGFloat(numberOfItems())
         let perPageItems:CGFloat = CGFloat(numberOfItemsPerPage())
@@ -157,6 +157,6 @@ extension WKAutomaticPagingFlowLayout{
         var height:CGFloat = 0.0
         width = ceil(items / perPageItems) * pageSize().width
         height = pageSize().height
-        return CGSizeMake(width, height)
+        return CGSize(width: width, height: height)
     }
 }
