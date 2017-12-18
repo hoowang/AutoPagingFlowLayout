@@ -13,7 +13,7 @@
 也可以下载文件，拖放至项目目录
 
 ## 使用方法：
-###1.创建flowlayout configurator对象 并配置参数
+### 1.创建flowlayout configurator对象 并配置参数
 
 ```Swift
         let configurator = WKAutomaticPagingFlowLayoutConfigurator()
@@ -35,5 +35,5 @@
 
 ### 3.其他的步骤与正常使用UICollectionView一致 
 
-此布局会根据datasource 自动分页 并根据相关配置参数分配每个Item.
+  此布局会根据datasource 自动分页 并根据相关配置参数分配每个Item.
 
