@@ -5,7 +5,7 @@
 ## 系统要求
 - iOS 8.0
 - ARC
-- Swift > ~2.2
+- Swift 4.0
 
 ## 安装方法
 支持CocoaPods 安装，pod search AutoPagingFlowLayout
@@ -26,7 +26,7 @@
 ```
 ### 2.根据layout创建CollectionView 
 ```Swift
-	    let layout = WKAutomaticPagingFlowLayout(layoutConfigurator: configurator)
+	let layout = WKAutomaticPagingFlowLayout(layoutConfigurator: configurator)
         let collectionView = UICollectionView(frame: CGRectZero, collectionViewLayout:layout)
         collectionView.pagingEnabled = true //自行指定分页属性 根据需要
         collectionView.wk_Size = CGSizeMake(
